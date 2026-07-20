@@ -69,12 +69,14 @@ Sample `runaway_loop` output (abridged):
 ```
 --- spendfuse simulate --scenario runaway_loop ---
 [t=+   15s] spend=$    2.70  rate=   n/a
-[t=+   30s] spend=$    6.34  rate= 14.58/min
+[t=+   30s] spend=$    6.35  rate= 14.60/min
+[t=+   45s] spend=$   11.27  rate= 17.14/min
+[t=+   60s] spend=$   17.91  rate= 20.22/min
+  !! FUSE TRIPPED: rule 'runaway_spend' -- spend accelerating: $20.22/min >= $20.00/min over 5 min window
+       -> action 'log_alert' (shell): OK - exit 0: [SpendFuse] FUSE TRIPPED: spend accelerating: $20.22/min >= $20.00/min over 5 min window
+[t=+   75s] spend=$   26.88  rate= 23.97/min
 ...
-[t=+  105s] spend=$   77.42  rate= 43.15/min
-  !! FUSE TRIPPED: rule 'runaway_spend' -- spend accelerating: $43.15/min >= $20.00/min over 5 min window
-       -> action 'log_alert' (shell): OK - exit 0: [SpendFuse] FUSE TRIPPED: spend accelerating: $43.15/min >= $20.00/min over 5 min window
-...
+[t=+  360s] spend=$10351.01  rate=1487.83/min
 --- scenario 'runaway_loop' complete: 1 trigger(s) fired ---
 ```
 
