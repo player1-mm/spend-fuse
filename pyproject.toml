@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spendfuse"
+version = "0.1.0"
+description = "A real-time circuit breaker for cloud spend: watch a cost signal continuously and trigger a protective action the instant a threshold is crossed."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Spend Fuse contributors" }]
+dependencies = [
+    "PyYAML>=6.0",
+    "psutil>=5.9",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+aws = ["boto3>=1.28"]
+dev = ["pytest>=7.4"]
+
+[project.scripts]
+spendfuse = "spendfuse.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["spendfuse*"]
